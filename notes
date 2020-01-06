@@ -1,3 +1,10 @@
 At first we added a favicon.ico file and some different sizes logo in the images directory.
 
 Add menifest.json file
+
+for mobile and ios support add some tags in the index.html
+    <meta name="theme-color" content="#236284" />
+    <!-- ios support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#236284" />
+    <link rel="apple-touch-icon" href="/images/pwa-96x96.png" />
