@@ -1,10 +1,46 @@
-At first we added a favicon.ico file and some different sizes logo in the images directory.
+# At first we added a favicon.ico file and some different sizes logo in the images directory.
 
-Add menifest.json file
+# Add menifest.json file
 
-for mobile and ios support add some tags in the index.html
+# For mobile and ios support add some tags in the index.html
     <meta name="theme-color" content="#236284" />
     <!-- ios support -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#236284" />
     <link rel="apple-touch-icon" href="/images/pwa-96x96.png" />
+
+
+# Add Service Worker sw.js file in the root of the directory and registered it to application from the js/app.js file
+    // Registering Service Worker in the application.
+    if ("serviceWorker" in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker
+                .register('/sw.js')
+                .then(reg => {
+                    // Successfully Registered
+                    console.log('service worker registered ' + reg.scope)
+                })
+                .catch(err => {
+                    // Registration failed
+                    console.log('service worker not registered ' + err)
+                });
+        });
+    }
+
+# In the sw.js file add some events.
+
+// service worker events
+// install event
+self.addEventListener("install", evt => {
+    console.log("Service worker has been installed!");
+});
+
+// activate event
+self.addEventListener("activate", evt => {
+    console.log("Service worker has been activated");
+});
+
+// fetch event
+self.addEventListener("fetch", evt => {
+    console.log("Service worker fetch event", evt);
+});
